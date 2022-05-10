@@ -1,0 +1,85 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.logo {
+    font-size: 20px;
+    padding: 0 8px;
+    font-weight: 12px;
+    align-items: center;
+    display: flex;
+}
+
+.logo i {
+    margin-right: 4px;
+    color: red;
+}
+
+
+
+.hanghae-fc {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: black;
+    margin-bottom: 4px;
+    
+}
+a {
+    text-decoration-line: none;
+}
+a:visited {
+    color: white;
+}
+a:link {
+    color: white;
+}
+a:hover {
+    color: grey;
+}
+
+.login-box {
+    display: flex;
+    align-items: center;
+    position: sticky;
+}
+
+
+.nav-bar {
+    display: flex;
+    list-style: none;
+    padding-left: 0;
+    font-size: 20px;
+    margin: 12px;
+}
+
+.nav-bar li {
+    padding: 8px 40px;
+}
+
+
+.login-btn {
+    margin: 10px;
+}
+
+
+.background-box {
+    width: 100%;
+    height: 100%;
+    
+}
+
+.img-fluid {
+    display: flex;
+    width: 100%;
+    height: 400px;
+}
+
+
+
+#contents {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
