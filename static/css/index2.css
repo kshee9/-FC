@@ -3,6 +3,11 @@ body {
     margin: 0;
     font-family: 'Source Sans Pro';
     font-size: 18px;
+    background-image: url(/static/imgs/mainpageimg.png);
+    width: 100%;
+    height: auto;
+    background-size: cover;
+    opacity: 0.7;
   }
 
   a{

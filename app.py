@@ -10,11 +10,10 @@ SECRET_KEY = 'SPARTA'
 
 from pymongo import MongoClient
 import certifi
-
 ca = certifi.where()
-client = MongoClient('mongodb+srv://test:sparta@cluster0.aa6ms.mongodb.net/Cluster0?retryWrites=true&w=majority',
-                     tlsCAFile=ca)
+client = MongoClient('mongodb+srv://test:sparta@cluster0.tkoz5.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
 db = client.dbsparta
+
 
 
 @app.route('/login')
@@ -33,10 +32,6 @@ def home():
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
-
-
-
-
 
 @app.route('/user/<username>')
 def user(username):
@@ -141,6 +136,30 @@ def update_like():
     except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
         return redirect(url_for("home"))
 
+# user token 받아오기
+def get_user_info():
+    token_receive = request.cookies.get('mytoken')
+    # render_params의 자료형은 list로 구성.
+    render_params = {}
+    try:
+        #유효한 token일 경우 return_params에는 user_info를 삽입해준 뒤 return
+        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
+        user_info = db.users.find_one({"id": payload["id"]})
+        render_params = user_info
+    except jwt.ExpiredSignatureError:
+        render_params['msg'] = '로그인 시간이 만료되었습니다.'
+    except jwt.exceptions.DecodeError:
+        render_params['msg'] = '로그인 정보가 존재하지 않습니다..'
+    finally:
+        return render_params
+
+@app.route('/intermediate')
+def intermediate():
+    # 카테고리창은 로그인해야만 볼 수 있음. 유효성 체크
+    user_info = get_user_info()
+    if 'id' not in user_info:
+        # 유효하지 않은 계정일 시, 초기화면으로 이동.
+        return render_template('index2.html')
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
