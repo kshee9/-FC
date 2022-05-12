@@ -1,94 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width= , initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
 
-  <link rel="stylesheet" href="../static/css/index2.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/index2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
 
-  <title>항해FC</title>
+    <title>항해FC</title>
 
-  <script src="https://kit.fontawesome.com/01200a824d.js" crossorigin="anonymous"></script>
-  <!— js —>
-  <script src="../static/js/index2.js" defer></script>
-<style>
-    .navbar__menu li:nth-child(3) {
+    <script src="https://kit.fontawesome.com/01200a824d.js" crossorigin="anonymous"></script>
+    <!— js —>
+    <script src="../static/js/index2.js" defer></script>
+    <style>
+        .navbar__menu li:nth-child(3) {
             background-color: grey;
             border-radius: 4px;
         }
-    .text__box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: lightsteelblue;
-      background-color: black;
-    }
-    .title__box {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: black;
-    }
-    .text {
-      color: aliceblue;
-    }
-    .video__box {
-        text-align: center;
-        margin: 30px;
-    }
-</style>
+
+        .text__box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: lightsteelblue;
+            background-color: black;
+        }
+
+        .title__box {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: black;
+        }
+
+        .text {
+            color: aliceblue;
+        }
+
+        .video__box {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+        .video__box2{
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+    </style>
 
 </head>
 <body>
-  <nav class="navbar">
+<nav class="navbar">
     <div class="navbar__logo">
         <i class="fa-regular fa-futbol"></i>
-      <a href="#">HangHaeFC</a>
+        <a href="#">HangHaeFC</a>
     </div>
     <ul class="navbar__menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="/beginner">Beginner</a></li>
-      <li class="intermediateMenu"><a href="#" onclick="changeMenu()">intermediate</a></li>
-      <li><a href="/expert">expert</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/beginner">Beginner</a></li>
+        <li class="intermediateMenu"><a href="#" onclick="changeMenu()">intermediate</a></li>
+        <li><a href="/expert">expert</a></li>
     </ul>
-  </nav>
-  <div>
+</nav>
+<div>
     <div class="title__box">
         <h3 class="text">Intermediate</h3>
     </div>
     <div class="text__box">
         <p class="text">중급 및 필수 기술입니다.</p>
     </div>
-  </div>
-  <div class="video__box">
+</div>
+<div class="video__box">
     <iframe width="420" height="350" src="https://www.youtube.com/embed/sYL9lbKpjII"
             title="YouTube video player" frameborder="0" allow="accelerometer;
              autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-       <iframe width="420" height="350" src="https://www.youtube.com/embed/ADleLTSFUeM"
-               title="YouTube video player" frameborder="0" allow="accelerometer;
+    <iframe width="420" height="350" src="https://www.youtube.com/embed/ADleLTSFUeM"
+            title="YouTube video player" frameborder="0" allow="accelerometer;
                 autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-       <iframe width="420" height="350" src="https://www.youtube.com/embed/B5dEH7CMIJw"
-               title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+    <iframe width="420" height="350" src="https://www.youtube.com/embed/B5dEH7CMIJw"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
                 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-       <iframe width="420" height="350" src="https://www.youtube.com/embed/usNkwACgqSc"
-               title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+    <iframe width="420" height="350" src="https://www.youtube.com/embed/usNkwACgqSc"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
                 clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <iframe width="420" height="350" src="https://www.youtube.com/embed/xCkT0Q9ysj8"
-              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+    </div>
+    <div class="video__box2">
+        <iframe width="420" height="350" src="https://www.youtube.com/embed/xCkT0Q9ysj8"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
                clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <iframe width="420" height="350" src="https://www.youtube.com/embed/TGTT1-zblbA"
-              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+        <iframe width="420" height="350" src="https://www.youtube.com/embed/TGTT1-zblbA"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
                clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <iframe width="420" height="350" src="https://www.youtube.com/embed/nFVOkLdsJZA"
-              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+        <iframe width="420" height="350" src="https://www.youtube.com/embed/nFVOkLdsJZA"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
                clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      <iframe width="420" height="350" src="https://www.youtube.com/embed/IcAUv5FPDLo"
-              title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
+        <iframe width="420" height="350" src="https://www.youtube.com/embed/IcAUv5FPDLo"
+            title="YouTube video player" frameborder="0" allow="accelerometer; autoplay;
               clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+    </div>
+
 </body>
 </html>

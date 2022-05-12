@@ -1,3 +1,5 @@
+
+// 로그인 함수
 function sign_in() {
     let username = $("#input-username").val()
     let password = $("#input-password").val()
@@ -27,14 +29,17 @@ function sign_in() {
         success: function (response) {
             if (response['result'] == 'success') {
                 $.cookie('mytoken', response['token'], {path: '/'});
+                alert("hi")
                 window.location.replace("/")
             } else {
+                alert("bye")
                 alert(response['msg'])
             }
         }
     });
 }
 
+// 회원가입 함수
 function sign_up() {
     let username = $("#input-username").val()
     let password = $("#input-password").val()
@@ -86,7 +91,7 @@ function sign_up() {
     });
 
 }
-
+// 회원가입 창
 function toggle_sign_up() {
     $("#sign-up-box").toggleClass("is-hidden")
     $("#div-sign-in-or-up").toggleClass("is-hidden")
@@ -139,3 +144,4 @@ function check_dup() {
         }
     });
 }
+

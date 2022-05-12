@@ -1,57 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width= , initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width= , initial-scale=1.0">
 
-  <link rel="stylesheet" href="../static/css/index2.css">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../static/css/index2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap" rel="stylesheet">
 
-  <title>항해FC</title>
-  
-  <script src="https://kit.fontawesome.com/01200a824d.js" crossorigin="anonymous"></script>
+    <title>항해FC</title>
 
-  <!-- js -->
+    <script src="https://kit.fontawesome.com/01200a824d.js" crossorigin="anonymous"></script>
+    <!-- js -->
     <script src="../static/js/index2.js" defer></script>
-    <script src="../static/js/login.js" defer></script>
-
-    <!--removeCookie를 위한 jQuery -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+
+
     <script>
         function sign_out() {
             $.removeCookie('mytoken', {path: '/'});
             alert('로그아웃!')
-            window.location.href = "/login"
+            window.location.href = "/"
         }
 
     </script>
+
+
 </head>
 <body>
-  <nav class="navbar">
+<nav class="navbar">
     <div class="navbar__logo">
-        <i class="fa-regular fa-futbol"></i>
-      <a href="#">HangHaeFC</a>
+        <a href="/"><i class="fa-regular fa-futbol"></i></a>
+        <a href="/">HangHaeFC</a>
     </div>
     <ul class="navbar__menu">
-      <li><a href="/">Home</a></li>
-      <li><a href="/beginner">Beginner</a></li>
-      <li><a href="/intermediate">intermediate</a></li>
-      <li><a href="/expert">expert</a></li>
-            <button class="nav-item button is-info is-light"
-                    style="font-family: 'Do Hyeon', sans-serif; margin-top: 8px;"
-                    onclick="sign_out()">logout
-            </button>
-
+        <li><a href="/">Home</a></li>
+        <li><a href="/beginner">Beginner</a></li>
+        <li><a href="/intermediate">intermediate</a></li>
+        <li><a href="/expert">expert</a></li>
+        <!-- <li class="login__btn"><a href="/login">login</a></li> -->
     </ul>
+    <button class="nav-item button is-info is-light"
+            style="font-family: 'Do Hyeon', sans-serif; margin-top: 8px;"
+            onclick="sign_out()" id="logout">logout
+    </button>
     <a href="#" class="navbar__togglebtn">
-      <i class="fa-solid fa-bars"></i>
+        <i class="fa-solid fa-bars"></i>
     </a>
-      <div class="bts">
+</nav>
+<div>
+    <div class="title__box">
+        <h3 class="text">Hello, we are HangHaeFC.</h3>
+    </div>
+    <div class="text__box">
+        <p class="text">자신이 어느정도 실력인지 생각해보고 위에있는 난이도를 클릭해주세요</p>
+    </div>
 </div>
-  </nav>
+<div class="video__box">
+    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/1IteB_N1Vhw" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+    <iframe width="100%" height="500px" src="https://www.youtube.com/embed/Y4o8DmZElho" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen></iframe>
+</div>
 </body>
 </html>
