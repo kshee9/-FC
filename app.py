@@ -4,16 +4,18 @@ import datetime
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 from werkzeug.utils import secure_filename
 from datetime import datetime, timedelta
+
 app = Flask(__name__)
 
 SECRET_KEY = 'SPARTA'
 
 from pymongo import MongoClient
 import certifi
-ca = certifi.where()
-client = MongoClient('mongodb+srv://test:sparta@cluster0.tkoz5.mongodb.net/Cluster0?retryWrites=true&w=majority', tlsCAFile=ca)
-db = client.dbsparta
 
+ca = certifi.where()
+client = MongoClient('mongodb+srv://test:sparta@cluster0.aa6ms.mongodb.net/Cluster0?retryWrites=true&w=majority',
+                     tlsCAFile=ca)
+db = client.dbsparta
 
 
 @app.route('/login')
@@ -21,30 +23,39 @@ def login():
     msg = request.args.get("msg")
     return render_template('login.html', msg=msg)
 
+
+@app.route('/beginner')
+def beginner():
+    return render_template('beginner.html')
+
+
+@app.route('/intermediate')
+def intermediate():
+    return render_template('intermediate.html')
+
+
+@app.route('/expert')
+def expert():
+    return render_template('expert.html')
+
+
 @app.route('/')
 def home():
     token_receive = request.cookies.get('mytoken')
     try:
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-
-        return render_template('index2.html')
+        user_info = db.users.find_one({"username": payload["id"]})
+        return render_template('index2.html', user_info=user_info)
     except jwt.ExpiredSignatureError:
         return redirect(url_for("login", msg="로그인 시간이 만료되었습니다."))
     except jwt.exceptions.DecodeError:
         return redirect(url_for("login", msg="로그인 정보가 존재하지 않습니다."))
 
-@app.route('/user/<username>')
-def user(username):
-    # 각 사용자의 프로필과 글을 모아볼 수 있는 공간
-    token_receive = request.cookies.get('mytoken')
-    try:
-        payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
-        status = (username == payload["id"])  # 내 프로필이면 True, 다른 사람 프로필 페이지면 False
 
-        user_info = db.users.find_one({"username": username}, {"_id": False})
-        return render_template('user.html', user_info=user_info, status=status)
-    except (jwt.ExpiredSignatureError, jwt.exceptions.DecodeError):
-        return redirect(url_for("home"))
+# 여기부터 열람 제한
+# id에 토큰이 없으면 열람 금지
+
+# def login_info():
 
 
 @app.route('/sign_in', methods=['POST'])
@@ -75,7 +86,7 @@ def sign_up():
     password_receive = request.form['password_give']
     password_hash = hashlib.sha256(password_receive.encode('utf-8')).hexdigest()
     doc = {
-        "username": username_receive,  # 아이디
+        "id": username_receive,  # 아이디
         "password": password_hash,  # 비밀번호
         "profile_name": username_receive,  # 프로필 이름 기본값은 아이디
         "profile_pic": "",  # 프로필 사진 파일 이름
@@ -142,7 +153,7 @@ def get_user_info():
     # render_params의 자료형은 list로 구성.
     render_params = {}
     try:
-        #유효한 token일 경우 return_params에는 user_info를 삽입해준 뒤 return
+        # 유효한 token일 경우 return_params에는 user_info를 삽입해준 뒤 return
         payload = jwt.decode(token_receive, SECRET_KEY, algorithms=['HS256'])
         user_info = db.users.find_one({"id": payload["id"]})
         render_params = user_info
@@ -153,13 +164,6 @@ def get_user_info():
     finally:
         return render_params
 
-@app.route('/intermediate')
-def intermediate():
-    # 카테고리창은 로그인해야만 볼 수 있음. 유효성 체크
-    user_info = get_user_info()
-    if 'id' not in user_info:
-        # 유효하지 않은 계정일 시, 초기화면으로 이동.
-        return render_template('index2.html')
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)
